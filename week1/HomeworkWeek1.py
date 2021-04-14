@@ -75,7 +75,7 @@ str2 = ''
 #        str2 += str1[i]
 for i, sample_int in enumerate(str1):
     if i % 2 == 0:
-        str2 += str1[i]
+        str2 += sample_int
 
 print("Original String :  ", str1)
 print("Final String :     ", str2)
