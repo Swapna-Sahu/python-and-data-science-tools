@@ -3,28 +3,22 @@
 def fizz_buzz(num):
     if num % 3 == 0 and num % 5 == 0:
         print(num, "-", "Fizz Buzz")
-    elif num == 1 or num == 2 or num == 3 or num == 5:
-        print(num, "-", "Prime")
-    elif num % 5 == 0 and num != 5:
+    elif num % 5 == 0:
         print(num, "-", "Buzz")
     elif num % 3 == 0 and num != 3:
         print(num, "-", "Fizz")
-    elif num % 2 != 0:
-        for i in range(3, 100):
-            if (num % i) != 0:
-                print(num, "-", "Prime")
-            break
     else:
         print(num)
 
 
-fizz_buzz(9)
+fizz_buzz(5)
 
 # Task 2 : try and except error for index
 
 
 try:
     random = [5, 10, 20]
+    print(random[2])
     print(random[3])
 except IndexError as e:
     print(e)
@@ -47,66 +41,52 @@ new_jet.details()
 
 # Task 5 - Write a Python script to check whether a given key already exists in a dictionary.
 
-SongInfo = {"1": "album", "2": "rating", "3": "singer", "4": "writer", "5": "musician",
-            "6": "released", "7": "genre", "8": "duration", "9": "recorded", "10": "producer"}
-for song in SongInfo:
-    print(song, ":", SongInfo[song])
+song_info = {"1": "album", "2": "rating", "3": "singer", "4": "writer", "5": "musician",
+             "6": "released", "7": "genre", "8": "duration", "9": "recorded", "10": "producer"}
+
+for key, value in song_info.items():
+    print(key, value)
 
 
-def guessKeyValue(key, value):
-    length = len(SongInfo)
-    for element in SongInfo:
-        length -= 1
-        if element == key:
-            if SongInfo[element] == value:
-                print("True - ", element, ",", SongInfo[element])
-                break
-            else:
-                print("False - Incorrect value of ", element)
-                break
-        else:
-            if length == 0:
-                print("False, No such key found!")
-            else:
-                continue
+def guess_key(input_key):
+    if input_key in song_info:
+        print(f'user input key -  {input_key}  is present')
+    else:
+        print("False, No such key found!")
 
 
-while True:
-    guess_key = input("which key do you want to guess?\n")
-    guess_value = input("what is the value of the key?\n")
-    guessKeyValue(guess_key, guess_value)
-    break
+user_key = input("which key do you want to guess?\n")
+print('user_key ', user_key)
+guess_key(user_key)
 
 
 # Task 6 - Write a function called showNumbers that takes a parameter called limit. It should print all the numbers
 # between 0 and limit with a label to identify the even and odd numbers.
 
-def showNumbers(limit):
-    count = 0
-    while count <= limit:
-        if count % 2 == 0:
-            print(count, "-", "Even")
+def show_numbers(limit):
+    for i in range(limit + 1):
+        if i % 2 == 0:
+            print(i, "-", "Even")
         else:
-            print(count, "-", "Odd")
-        count += 1
+            print(i, "-", "Odd")
 
 
-showNumbers(9)
+show_numbers(9)
 
 
 # Task 8 - Create a class named Person, with firstname and lastname properties, and a print name method.
 
 class Person:
-    def __init__(self, firstname, lastname):
-        self.first_name = firstname
-        self.last_name = lastname
+    def __init__(self, first, last):
+        self.first_name = first
+        self.last_name = last
 
-    def fullname(self):
+    def full_name(self):
         print(f'Fullname is : {self.first_name}  {self.last_name}')
 
 
 my_name = Person("Swapna", "Sahu")
-my_name.fullname()
+my_name.full_name()
 
 # Task 9 - Write a program asks for numeric user input. Instead the user types characters in the input box. The
 # program normally would crash. But write try-except block so it can be handled properly.
@@ -134,7 +114,7 @@ class Marks:
 student1 = Student()
 mark1 = Marks()
 
-print(student1)
-print(mark1)
+print(type(student1))
+print(type(mark1))
 print(isinstance(student1, Student))
 print(isinstance(mark1, Marks))
