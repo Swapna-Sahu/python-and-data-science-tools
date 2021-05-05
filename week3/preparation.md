@@ -1,5 +1,0 @@
-# Preparation
-- 
-
-## Flipped classroom videos
-- 
